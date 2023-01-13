@@ -3,7 +3,7 @@ from collections import deque
 import argparse
 import pyautogui
 
-
+#работаем с двумя камерами
 camera = cv2.VideoCapture(0)
 camera1 = cv2.VideoCapture(1)
 
@@ -81,6 +81,7 @@ while True:
       #клик, когда шарик попадает в зону "клика" второй камеры
       if int(x)>290:
         pyautogui.click()
+	#задержка чтобы наш поросенок отлетел от стены, иначе накрутит много очков
         cv2.waitKey(700)
 
 
@@ -89,7 +90,7 @@ while True:
 
   # update the points queue
   pts.appendleft(center)
-  #линия настройки, от нее отталкиваемся когда нужно сделать клик
+  #линия настройки, на картинке получаемой с камеры контроля "клика"
   cv2.line(frame, (320, 0), (320, 512), (0, 255, 0), thickness=2)
   cv2.line(frame, (295, 0), (295, 512), (0, 255, 0), thickness=2)
 
